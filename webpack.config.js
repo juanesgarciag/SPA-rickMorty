@@ -2,6 +2,10 @@ const path = require('path');  //permite acceder donde nos estamos moviendo en e
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');  //Nos permite trabajar con html
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 //configuración de lo que va a suceder
 
 module.exports = {
@@ -14,13 +18,13 @@ module.exports = {
         filename: 'main.js',
     },
     //extensiones que utilizara nuestro proyecto
-    resolve:{
+    resolve: {
         extensions: ['.js'],
     },
     //modulo con las reglas necesarias para trabajar
     //regla para babel
-    module:{
-        rules:[
+    module: {
+        rules: [
             //son pasadas por un arreglo
             {
                 //estructura de babel, requiere un test de como identificar los archivos
@@ -32,10 +36,23 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 }
-            }
+            },
+            {
+                test: /\.css?$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: false,
+                        },
+                    },
+                    'css-loader',
+                ],
+            },
         ]
     },
     //plugins a utilizar
+
     plugins: [
         //webpackplugin que nos permite trabajar con los archivos html
         //instanciamos en la parte superior
@@ -46,8 +63,13 @@ module.exports = {
                 //donde se encuentra en el template ppal
                 template: './public/index.html',
                 //a donde vamos a guardar este archivo y podemos darle un nombre
-                fielname: './index.html',
+                filename: './index.html',
             }
-        )
-    ]
-}
+        ),
+        new MiniCssExtractPlugin({
+            filename: 'assets/[hash].css',
+        }),
+    ],
+};
+
+
