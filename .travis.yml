@@ -9,7 +9,7 @@ cache:
   script:
     - yarn build
   deploy:
-    provider: pages
+    provider: github pages
     edge: true
     skip-cleanup: true
     keep-history: true
