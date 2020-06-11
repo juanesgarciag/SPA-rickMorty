@@ -7,15 +7,15 @@ cache:
   git:
     depth: 3
   script:
-    - yarn buil
+    - yarn build
   deploy:
-    provider: page
+    provider: pages
     edge: true
     skip-cleanup: true
     keep-history: true
     github-token: $GITHUB_TOKEN
     local-dir: dist/
-    target-branch: gh-page
+    target-branch: gh-pages
     commit_message: "Deploy Release"
     on:
       branch: master
