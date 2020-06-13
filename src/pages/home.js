@@ -8,8 +8,9 @@ const Home = async() => {
             ${characters.results.map(character => `
                 <article class="Characters-item">
                     <a href="#/${character.id}">
+                        <h2>${character.name}</h2>
                         <img src="${character.image}" alt="${character.name}">
-                        <h2>${character.name}</h2> <button class="Character-button">
+                        <button>
                         Ver más</button>
                     </a>
                 </article>

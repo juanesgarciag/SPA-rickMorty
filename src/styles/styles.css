@@ -83,16 +83,19 @@ body {
 .Characters-item img {
   width: 100%;
   height: auto;
-  border-radius: 5px 5px 0 0;
 }
 
 .Characters-item h2 {
   font-size: 1.3em;
   font-weight: 500;
   padding: 5px 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #383838;
+  color: floralwhite;
   display: flex;
   justify-content: center;
-  margin: 5px 0;;
+  margin: 0;
 }
 
 .Characters-item a {
