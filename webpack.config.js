@@ -2,8 +2,6 @@ const path = require('path');  //permite acceder donde nos estamos moviendo en e
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');  //Nos permite trabajar con html
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //configuración de lo que va a suceder
@@ -41,10 +39,7 @@ module.exports = {
                 test: /\.css?$/,
                 use: [
                     {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: false,
-                        },
+                      loader: MiniCssExtractPlugin.loader
                     },
                     'css-loader',
                 ],
@@ -61,13 +56,12 @@ module.exports = {
                 //como voy a inyectar en un archivo html
                 inject: true,
                 //donde se encuentra en el template ppal
-                template: './public/index.html',
+                template: './public/index.html'
                 //a donde vamos a guardar este archivo y podemos darle un nombre
-                filename: './index.html',
             }
         ),
         new MiniCssExtractPlugin({
-            filename: 'assets/[hash].css',
+            filename: 'assets/[name].[contentHash].css',
         }),
     ],
 };
