@@ -46,7 +46,7 @@ body {
   border-radius: 5px;
   margin: 0 0 20px 0;
   display: block;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-name: fade;
 }
 
